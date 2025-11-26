@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/devops-project-3-frontend:latest
+          image: himanm/devops-project-3-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
