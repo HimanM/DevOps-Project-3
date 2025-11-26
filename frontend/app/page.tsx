@@ -167,9 +167,9 @@ spec:
   type: ClusterIP`
   },
   {
-    name: "Ingress",
-    filename: "09-ingress.yaml",
-    description: "Routes external traffic to services with TLS termination via Traefik.",
+    name: "Traefik Ingress (Option A)",
+    filename: "traefik-ingress.yaml",
+    description: "Configures Traefik Ingress Controller (Default for K3s).",
     code: `apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -179,6 +179,43 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
+  rules:
+    - host: devops3.himanmanduja.fun
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 3000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 5000`
+  },
+  {
+    name: "Nginx Ingress (Option B)",
+    filename: "nginx-ingress.yaml",
+    description: "Configures Nginx Ingress Controller (Standard K8s).",
+    code: `apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fullstack-ingress-nginx
+  namespace: fullstack
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - hosts:
+        - devops3.himanmanduja.fun
+      secretName: fullstack-tls
   rules:
     - host: devops3.himanmanduja.fun
       http:

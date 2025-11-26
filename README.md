@@ -34,6 +34,9 @@ Before starting, ensure you have the following:
 
 *   **Linux Server** (Ubuntu 20.04+ recommended) or a local VM.
 *   **Root Access** or sudo privileges.
+*   **Ingress Controller**:
+    *   **Traefik** (Default in K3s)
+    *   **Nginx** (Standard K8s)
 *   **Domain Name** (Optional but recommended for Ingress).
 *   **DockerHub Account** for storing container images.
 *   **GitHub Account** for hosting the repository.
