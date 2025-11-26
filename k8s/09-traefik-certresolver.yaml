@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: fullstack
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+# Note: This assumes Traefik is already installed and configured with a certificate resolver named "myresolver"
+# If you need to define a TLSStore or other specific Traefik CRDs, add them here.
+# For example, a default TLSStore:
+apiVersion: traefik.containo.us/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: fullstack
+spec:
+  defaultCertificate:
+    secretName: fullstack-tls-cert # You would need to create this secret or rely on CertManager/Traefik to create it

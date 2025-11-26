@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fullstack-config
+  namespace: fullstack
+data:
+  NEXT_PUBLIC_API_URL: "https://fullstack.himanmanduja.fun/api"
+  FLASK_ENV: "production"
