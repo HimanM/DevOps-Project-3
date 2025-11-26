@@ -66,12 +66,23 @@ export function ArgoCDSetup() {
                             className="relative max-w-7xl w-full max-h-[90vh] flex flex-col items-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <button
-                                onClick={() => setSelectedImage(null)}
-                                className="absolute -top-12 right-0 p-2 text-zinc-400 hover:text-white transition-colors"
-                            >
-                                <X className="h-8 w-8" />
-                            </button>
+                            <div className="absolute -top-12 right-0 flex items-center gap-4">
+                                <a
+                                    href={selectedImage.src}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 text-zinc-400 hover:text-white transition-colors"
+                                    title="Open original"
+                                >
+                                    <ZoomIn className="h-6 w-6" />
+                                </a>
+                                <button
+                                    onClick={() => setSelectedImage(null)}
+                                    className="p-2 text-zinc-400 hover:text-white transition-colors"
+                                >
+                                    <X className="h-8 w-8" />
+                                </button>
+                            </div>
 
                             <div className="relative w-full h-[80vh] rounded-lg overflow-hidden bg-zinc-950 border border-zinc-800 shadow-2xl">
                                 <Image
@@ -112,6 +123,7 @@ function GalleryItem({ src, title, delay, onClick, icon }: { src: string, title:
                     src={src}
                     alt={title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                 />
             </div>

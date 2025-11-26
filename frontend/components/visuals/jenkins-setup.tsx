@@ -11,27 +11,27 @@ export function JenkinsSetup() {
     return (
         <div className="space-y-16">
             {/* Instructions Section (Text Only) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="space-y-8"
+                    className="space-y-6 md:space-y-8"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                            <Key className="h-5 w-5 text-blue-400" />
+                        <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                            <Key className="h-4 w-4 md:h-5 md:w-5 text-blue-400" />
                         </div>
-                        <h3 className="text-xl font-semibold text-white">1. Configure Credentials</h3>
+                        <h3 className="text-lg md:text-xl font-semibold text-white">1. Configure Credentials</h3>
                     </div>
 
-                    <div className="space-y-6 pl-4 border-l-2 border-zinc-800">
+                    <div className="space-y-4 md:space-y-6 pl-4 border-l-2 border-zinc-800">
                         <div className="space-y-2">
-                            <h4 className="font-medium text-zinc-200 flex items-center gap-2">
-                                <span className="h-6 w-6 rounded-full bg-zinc-800 text-xs flex items-center justify-center">A</span>
+                            <h4 className="text-sm md:text-base font-medium text-zinc-200 flex items-center gap-2">
+                                <span className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-zinc-800 text-[10px] md:text-xs flex items-center justify-center">A</span>
                                 DockerHub
                             </h4>
-                            <p className="text-sm text-zinc-400 leading-relaxed">
+                            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                                 Go to <strong>Manage Jenkins &gt; Credentials</strong>. Add a new "Username with password" credential.
                                 <br />
                                 <span className="text-zinc-500">ID:</span> <code className="text-blue-400 bg-blue-500/10 px-1 rounded">dockerhub-username</code>
@@ -39,11 +39,11 @@ export function JenkinsSetup() {
                         </div>
 
                         <div className="space-y-2">
-                            <h4 className="font-medium text-zinc-200 flex items-center gap-2">
-                                <span className="h-6 w-6 rounded-full bg-zinc-800 text-xs flex items-center justify-center">B</span>
+                            <h4 className="text-sm md:text-base font-medium text-zinc-200 flex items-center gap-2">
+                                <span className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-zinc-800 text-[10px] md:text-xs flex items-center justify-center">B</span>
                                 GitHub Token
                             </h4>
-                            <p className="text-sm text-zinc-400 leading-relaxed">
+                            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                                 Add a new "Secret text" credential for your Personal Access Token (PAT).
                                 <br />
                                 <span className="text-zinc-500">ID:</span> <code className="text-blue-400 bg-blue-500/10 px-1 rounded">github-token</code>
@@ -57,22 +57,22 @@ export function JenkinsSetup() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="space-y-8"
+                    className="space-y-6 md:space-y-8"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                            <Settings className="h-5 w-5 text-purple-400" />
+                        <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                            <Settings className="h-4 w-4 md:h-5 md:w-5 text-purple-400" />
                         </div>
-                        <h3 className="text-xl font-semibold text-white">2. Create Pipelines</h3>
+                        <h3 className="text-lg md:text-xl font-semibold text-white">2. Create Pipelines</h3>
                     </div>
 
-                    <div className="space-y-6 pl-4 border-l-2 border-zinc-800">
+                    <div className="space-y-4 md:space-y-6 pl-4 border-l-2 border-zinc-800">
                         <div className="space-y-2">
-                            <h4 className="font-medium text-zinc-200 flex items-center gap-2">
-                                <span className="h-6 w-6 rounded-full bg-zinc-800 text-xs flex items-center justify-center">A</span>
+                            <h4 className="text-sm md:text-base font-medium text-zinc-200 flex items-center gap-2">
+                                <span className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-zinc-800 text-[10px] md:text-xs flex items-center justify-center">A</span>
                                 CI Pipeline
                             </h4>
-                            <p className="text-sm text-zinc-400 leading-relaxed">
+                            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                                 Create a Pipeline job named <code className="text-purple-400 bg-purple-500/10 px-1 rounded">DevOps-Project-3</code>.
                                 <br />
                                 <span className="text-zinc-500">Script Path:</span> <code className="text-zinc-300">Jenkinsfile</code>
@@ -80,11 +80,11 @@ export function JenkinsSetup() {
                         </div>
 
                         <div className="space-y-2">
-                            <h4 className="font-medium text-zinc-200 flex items-center gap-2">
-                                <span className="h-6 w-6 rounded-full bg-zinc-800 text-xs flex items-center justify-center">B</span>
+                            <h4 className="text-sm md:text-base font-medium text-zinc-200 flex items-center gap-2">
+                                <span className="h-5 w-5 md:h-6 md:w-6 rounded-full bg-zinc-800 text-[10px] md:text-xs flex items-center justify-center">B</span>
                                 CD Pipeline
                             </h4>
-                            <p className="text-sm text-zinc-400 leading-relaxed">
+                            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                                 Create a Pipeline job named <code className="text-purple-400 bg-purple-500/10 px-1 rounded">DevOps-Deploy</code>.
                                 <br />
                                 <span className="text-zinc-500">Script Path:</span> <code className="text-zinc-300">Jenkinsfile.deploy</code>
@@ -159,12 +159,23 @@ export function JenkinsSetup() {
                             className="relative max-w-7xl w-full max-h-[90vh] flex flex-col items-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <button
-                                onClick={() => setSelectedImage(null)}
-                                className="absolute -top-12 right-0 p-2 text-zinc-400 hover:text-white transition-colors"
-                            >
-                                <X className="h-8 w-8" />
-                            </button>
+                            <div className="absolute -top-12 right-0 flex items-center gap-4">
+                                <a
+                                    href={selectedImage.src}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2 text-zinc-400 hover:text-white transition-colors"
+                                    title="Open original"
+                                >
+                                    <ZoomIn className="h-6 w-6" />
+                                </a>
+                                <button
+                                    onClick={() => setSelectedImage(null)}
+                                    className="p-2 text-zinc-400 hover:text-white transition-colors"
+                                >
+                                    <X className="h-8 w-8" />
+                                </button>
+                            </div>
 
                             <div className="relative w-full h-[80vh] rounded-lg overflow-hidden bg-zinc-950 border border-zinc-800 shadow-2xl">
                                 <Image
@@ -205,6 +216,7 @@ function GalleryItem({ src, title, delay, onClick, icon }: { src: string, title:
                     src={src}
                     alt={title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
