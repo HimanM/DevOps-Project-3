@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: himanm/devops-project-3-backend:5
+          image: himanm/devops-project-3-backend:6
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
