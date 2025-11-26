@@ -5,6 +5,10 @@ This guide explains how to set up ArgoCD to automatically sync your Kubernetes m
 ## 1. Prerequisites
 -   Kubernetes cluster (e.g., K3s) running.
 -   ArgoCD installed in the cluster.
+    ```bash
+    kubectl create namespace argocd
+    kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    ```
 -   `argocd` CLI installed (optional, but helpful).
 
 ## 2. Accessing ArgoCD
@@ -21,10 +25,10 @@ This guide explains how to set up ArgoCD to automatically sync your Kubernetes m
 ### Option B: Port Forward (Fallback)
 1.  **Port Forward**:
     ```bash
-    kubectl port-forward svc/argocd-server -n argocd 8080:443
+    kubectl port-forward svc/argocd-server -n argocd 8082:443
     ```
 2.  **Login**:
-    -   URL: `https://localhost:8080`
+    -   URL: `https://localhost:8082`
     -   Username: `admin`
     -   Password: (Same as above)
 
