@@ -29,12 +29,12 @@ export function BackendStatus() {
 
     return (
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden">
-            <div className="p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900">
+            <div className="p-3 md:p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-900">
                 <div className="flex items-center gap-2">
-                    <Database className="h-5 w-5 text-blue-400" />
-                    <h3 className="font-semibold text-white">Backend API Status</h3>
+                    <Database className="h-4 w-4 md:h-5 md:w-5 text-blue-400" />
+                    <h3 className="font-semibold text-sm md:text-base text-white">Backend API Status</h3>
                 </div>
-                <div className="flex items-center gap-2 text-sm">
+                <div className="flex items-center gap-2 text-xs md:text-sm">
                     {loading ? (
                         <span className="flex items-center gap-1 text-zinc-400">
                             <Loader2 className="h-3 w-3 animate-spin" /> Connecting...
@@ -51,18 +51,18 @@ export function BackendStatus() {
                 </div>
             </div>
 
-            <div className="p-6">
-                <p className="text-zinc-400 mb-4">
+            <div className="p-4 md:p-6">
+                <p className="text-xs md:text-base text-zinc-400 mb-3 md:mb-4">
                     This component fetches data from the Python Flask backend via the Next.js API proxy.
                     It demonstrates the full-stack connectivity within the Kubernetes cluster.
                 </p>
 
                 <div className="space-y-2">
-                    <div className="text-xs font-mono text-zinc-500 uppercase">Response from /api/data</div>
+                    <div className="text-[10px] md:text-xs font-mono text-zinc-500 uppercase">Response from /api/data</div>
                     {loading ? (
                         <div className="h-24 rounded-lg bg-zinc-900 animate-pulse" />
                     ) : error ? (
-                        <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-mono">
+                        <div className="p-3 md:p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs md:text-sm font-mono">
                             Error: {error}
                         </div>
                     ) : (

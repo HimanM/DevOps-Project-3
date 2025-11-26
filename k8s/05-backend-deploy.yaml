@@ -4,6 +4,7 @@ metadata:
   name: backend
   namespace: fullstack
 spec:
+  # Commented out for single replica for demonstration
   # replicas: 2
   replicas: 1
   selector:
