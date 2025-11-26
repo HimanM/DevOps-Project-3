@@ -151,7 +151,7 @@ spec:
   {
     name: "Frontend Service",
     filename: "08-frontend-service.yaml",
-    description: "Exposes the frontend internally on port 3000.",
+    description: "Exposes the frontend internally on port 3005.",
     code: `apiVersion: v1
 kind: Service
 metadata:
@@ -162,7 +162,7 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: 3000
+      port: 3005
       targetPort: 3000
   type: ClusterIP`
   },
@@ -189,7 +189,7 @@ spec:
               service:
                 name: frontend-service
                 port:
-                  number: 3000
+                  number: 3005
           - path: /api
             pathType: Prefix
             backend:
@@ -208,10 +208,10 @@ metadata:
   name: fullstack-ingress-nginx
   namespace: fullstack
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - devops3.himanmanduja.fun
@@ -226,7 +226,7 @@ spec:
               service:
                 name: frontend-service
                 port:
-                  number: 3000
+                  number: 3005
           - path: /api
             pathType: Prefix
             backend:
