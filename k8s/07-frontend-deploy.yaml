@@ -25,11 +25,11 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: NEXT_PUBLIC_API_URL
+            - name: BACKEND_URL
               valueFrom:
                 configMapKeyRef:
                   name: fullstack-config
-                  key: NEXT_PUBLIC_API_URL
+                  key: BACKEND_URL
           livenessProbe:
             httpGet:
               path: /
