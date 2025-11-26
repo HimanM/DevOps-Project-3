@@ -12,10 +12,10 @@ spec:
 # If you need to define a TLSStore or other specific Traefik CRDs, add them here.
 # For example, a default TLSStore:
 apiVersion: traefik.containo.us/v1alpha1
-kind: TLSStore
+kind: TLSOption
 metadata:
-  name: default
+  name: default-tls
   namespace: fullstack
 spec:
-  defaultCertificate:
-    secretName: fullstack-tls-cert # You would need to create this secret or rely on CertManager/Traefik to create it
+  minVersion: VersionTLS12
+  sniStrict: true
