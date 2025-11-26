@@ -1,16 +1,9 @@
 pipeline {
-    // agent {
-    //     docker {
-    //         image 'docker:latest'
-    //         // Mount the host Docker socket to allow building images
-    //         // Run as root to access the socket
-    //         args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
-    //     }
-    // }
     agent any
     environment {
         DOCKER_CRED = credentials('dockerhub-username')
-        IMAGE_TAG = "latest"
+        // Use Jenkins BUILD_NUMBER as the image tag
+        IMAGE_TAG = "${BUILD_NUMBER}"
     }
     stages {
         stage('Checkout') {
@@ -51,9 +44,10 @@ pipeline {
             }
         }
     }
-    // post {
-    //     success {
-    //         build job: 'DevOps-CD', wait: false
-    //     }
-    // }
+    post {
+        success {
+            // Trigger the deployment pipeline with the new tag
+            build job: 'DevOps-Deploy', parameters: [string(name: 'IMAGE_TAG', value: "${env.BUILD_NUMBER}")], wait: false
+        }
+    }
 }
