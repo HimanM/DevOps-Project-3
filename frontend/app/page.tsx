@@ -9,6 +9,9 @@ import { WorkflowDiagram } from "@/components/visuals/workflow-diagram"
 import { BackendStatus } from "@/components/visuals/backend-status"
 import { ManifestViewer } from "@/components/visuals/manifest-viewer"
 import { JenkinsViewer } from "@/components/visuals/jenkins-viewer"
+import { JenkinsSetup } from "@/components/visuals/jenkins-setup"
+import { ArgoCDSetup } from "@/components/visuals/argocd-setup"
+import { KubectlSetup } from "@/components/visuals/kubectl-setup"
 import Link from "next/link"
 
 const manifests = [
@@ -375,6 +378,10 @@ export default function Home() {
             delay={0.3}
           />
         </div>
+
+        <div className="pt-8 border-t border-zinc-800">
+          <KubectlSetup />
+        </div>
       </section>
 
       {/* Kubernetes Section */}
@@ -395,6 +402,11 @@ export default function Home() {
         </div>
 
         <JenkinsViewer files={jenkinsFiles} />
+
+        <div className="pt-8 border-t border-zinc-800">
+          <h3 className="text-2xl font-bold text-white mb-6">Setup Guide</h3>
+          <JenkinsSetup />
+        </div>
       </section>
 
       {/* ArgoCD Section */}
@@ -449,8 +461,14 @@ spec:
       selfHeal: true`}
             />
           </div>
+
+        </div>
+
+        <div className="pt-8 border-t border-zinc-800">
+          <ArgoCDSetup />
         </div>
       </section>
-    </div>
+
+    </div >
   )
 }
