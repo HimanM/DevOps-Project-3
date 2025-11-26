@@ -217,7 +217,7 @@ Connect ArgoCD to your Git repository to start syncing.
 
 ## Visual Reference
 
-### System Architecture
+### Jenkins Pipelines Overview
 ![Architecture](docs/jenkins_project_3_pipelines_overview.png)
 
 ### Jenkins Pipelines
