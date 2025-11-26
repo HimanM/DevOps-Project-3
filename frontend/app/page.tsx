@@ -167,6 +167,25 @@ spec:
   type: ClusterIP`
   },
   {
+    name: "Frontend NodePort (Direct Access)",
+    filename: "frontend-nodeport.yaml",
+    description: "Exposes the frontend on NodePort 30005 for direct IP access.",
+    code: `apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-nodeport
+  namespace: fullstack
+spec:
+  type: NodePort
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 3005
+      targetPort: 3000
+      nodePort: 30005`
+  },
+  {
     name: "Traefik Ingress (Option A)",
     filename: "traefik-ingress.yaml",
     description: "Configures Traefik Ingress Controller (Default for K3s).",

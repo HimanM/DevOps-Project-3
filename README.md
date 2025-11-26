@@ -68,6 +68,21 @@ K3s is a lightweight, certified Kubernetes distribution. We will use it to host 
     sudo chown $(id -u):$(id -g) ~/.kube/config
     ```
 
+### Installing Nginx Ingress Controller (Optional)
+
+K3s comes with Traefik by default. If you prefer Nginx, you must install the controller:
+
+1.  **Install via Helm**:
+    ```bash
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+    helm repo update
+    helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
+    ```
+
+2.  **Disable Traefik (Recommended if using Nginx)**:
+    If you want Nginx to be the primary controller on ports 80/443, you may need to disable Traefik in K3s config or ensure they don't conflict.
+    *   *Quick Fix*: Edit `/etc/systemd/system/k3s.service` and add `--disable traefik` to the `ExecStart` command, then run `sudo systemctl daemon-reload && sudo systemctl restart k3s`.
+
 ### Installing Jenkins
 
 We will deploy Jenkins directly on the Kubernetes cluster.
