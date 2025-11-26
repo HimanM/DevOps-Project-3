@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         // Credential ID for GitHub access (Secret Text)
+        DOCKER_CRED = credentials('dockerhub-username')
         GIT_CRED_ID = 'github-token' 
         REPO_URL = 'github.com/himanm/devops-project-3.git'
     }
