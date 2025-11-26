@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'IMAGE_TAG', description: 'Docker Image Tag to deploy')
+    }
+    environment {
+        // Credential ID for GitHub access (Secret Text)
+        GIT_CRED_ID = 'github-token' 
+        REPO_URL = 'github.com/himanm/devops-project-3.git'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the main branch
+                git branch: 'main', url: "https://${REPO_URL}"
+            }
+        }
+        stage('Update Manifests') {
+            steps {
+                script {
+                    // Update frontend deployment image tag
+                    sh "sed -i 's|image: .*/devops-project-3-frontend:.*|image: $DOCKER_CRED_USR/devops-project-3-frontend:${params.IMAGE_TAG}|' k8s/07-frontend-deploy.yaml"
+                    
+                    // Update backend deployment image tag
+                    sh "sed -i 's|image: .*/devops-project-3-backend:.*|image: $DOCKER_CRED_USR/devops-project-3-backend:${params.IMAGE_TAG}|' k8s/05-backend-deploy.yaml"
+                    
+                    // Verify changes
+                    sh "cat k8s/07-frontend-deploy.yaml | grep image:"
+                    sh "cat k8s/05-backend-deploy.yaml | grep image:"
+                }
+            }
+        }
+        stage('Push Changes') {
+            steps {
+                withCredentials([string(credentialsId: GIT_CRED_ID, variable: 'GITHUB_TOKEN')]) {
+                    sh """
+                        git config user.email "jenkins@himanmanduja.fun"
+                        git config user.name "Jenkins CI"
+                        git add k8s/05-backend-deploy.yaml k8s/07-frontend-deploy.yaml
+                        git commit -m "Update image tags to ${params.IMAGE_TAG}"
+                        git push https://${GITHUB_TOKEN}@${REPO_URL} main
+                    """
+                }
+            }
+        }
+    }
+}
