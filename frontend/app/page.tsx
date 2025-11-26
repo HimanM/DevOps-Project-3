@@ -316,7 +316,7 @@ export default function Home() {
             </span>
             DevOps Project 3
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight">
             Modern <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">GitOps</span> Workflow
           </h1>
           <p className="text-xl text-zinc-400 mb-8 leading-relaxed">
@@ -347,7 +347,7 @@ export default function Home() {
       <section id="architecture" className="space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800 pb-4">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-2">System Architecture</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">System Architecture</h2>
             <p className="text-zinc-400">Visualizing the flow from code commit to production deployment.</p>
           </div>
         </div>
@@ -387,7 +387,7 @@ export default function Home() {
       {/* Kubernetes Section */}
       <section id="kubernetes" className="space-y-8">
         <div className="border-b border-zinc-800 pb-4">
-          <h2 className="text-3xl font-bold text-white mb-2">Kubernetes Manifests</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Kubernetes Manifests</h2>
           <p className="text-zinc-400">Infrastructure as Code definitions for the application.</p>
         </div>
 
@@ -397,7 +397,7 @@ export default function Home() {
       {/* Jenkins Section */}
       <section id="jenkins" className="space-y-8">
         <div className="border-b border-zinc-800 pb-4">
-          <h2 className="text-3xl font-bold text-white mb-2">Jenkins CI Pipeline</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Jenkins CI Pipeline</h2>
           <p className="text-zinc-400">Automated build and test workflows.</p>
         </div>
 
@@ -412,7 +412,7 @@ export default function Home() {
       {/* ArgoCD Section */}
       <section id="argocd" className="space-y-8">
         <div className="border-b border-zinc-800 pb-4">
-          <h2 className="text-3xl font-bold text-white mb-2">ArgoCD GitOps</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">ArgoCD GitOps</h2>
           <p className="text-zinc-400">Continuous Deployment via Git.</p>
         </div>
 

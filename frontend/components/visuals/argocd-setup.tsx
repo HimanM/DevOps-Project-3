@@ -17,7 +17,7 @@ export function ArgoCDSetup() {
                     <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded-full border border-zinc-800">Click to enlarge</span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6">
                     <GalleryItem
                         src="/screenshots/argocd-sync_1.png"
                         title="Application Sync Status"

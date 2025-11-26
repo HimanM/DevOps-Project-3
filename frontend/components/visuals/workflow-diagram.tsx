@@ -32,7 +32,7 @@ export function WorkflowDiagram() {
         <div className="w-full bg-zinc-950 rounded-xl border border-zinc-800 p-8 md:p-12 relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
 
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 max-w-5xl mx-auto">
+            <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-5xl mx-auto">
 
                 {/* Row 1 */}
 
@@ -136,8 +136,53 @@ export function WorkflowDiagram() {
                 </div>
             </div>
 
-            {/* Mobile Flow Indicators (Vertical) */}
-            <div className="md:hidden absolute left-1/2 top-0 bottom-0 w-[2px] bg-zinc-800 -z-10 -translate-x-1/2" />
+            {/* Mobile Flow Indicators (SVG Overlay) */}
+            <div className="md:hidden absolute inset-0 pointer-events-none z-0">
+                <svg className="w-full h-full" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
+                        </linearGradient>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style={{ stopColor: '#06b6d4', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: 'white', stopOpacity: 1 }} />
+                        </linearGradient>
+                        <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{ stopColor: 'white', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: '#f97316', stopOpacity: 1 }} />
+                        </linearGradient>
+                        <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style={{ stopColor: '#f97316', stopOpacity: 1 }} />
+                            <stop offset="100%" style={{ stopColor: '#60a5fa', stopOpacity: 1 }} />
+                        </linearGradient>
+                    </defs>
+
+                    {/* 1->2 Horizontal */}
+                    <motion.path d="M 25% 40px H 75%" stroke="url(#grad1)" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity }} />
+
+                    {/* 2->3 Z-Shape */}
+                    <motion.path d="M 75% 80px V 120px H 25% V 160px" stroke="url(#grad2)" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }} />
+
+                    {/* 3->4 Horizontal */}
+                    <motion.path d="M 25% 200px H 75%" stroke="url(#grad3)" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity, delay: 1.0 }} />
+
+                    {/* 4->5 Z-Shape */}
+                    <motion.path d="M 75% 240px V 280px H 25% V 320px" stroke="url(#grad4)" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity, delay: 1.5 }} />
+
+                    {/* 5->6 Horizontal */}
+                    <motion.path d="M 25% 360px H 75%" stroke="url(#grad5)" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity, delay: 2.0 }} />
+                </svg>
+            </div>
         </div>
     )
 }
