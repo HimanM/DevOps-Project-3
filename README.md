@@ -34,10 +34,10 @@ Before starting, ensure you have the following:
 
 *   **Linux Server** (Ubuntu 20.04+ recommended) or a local VM.
 *   **Root Access** or sudo privileges.
-*   **Ingress Controller**:
-    *   **Traefik** (Default in K3s)
-    *   **Nginx** (Standard K8s)
-*   **Domain Name** (Optional but recommended for Ingress).
+*   **Ingress Controller** (Optional):
+    *   Not required if you use **NodePort** to access the application via IP.
+    *   Required only if you want to use a domain name with **Traefik** or **Nginx**.
+*   **Domain Name** (Optional).
 *   **DockerHub Account** for storing container images.
 *   **GitHub Account** for hosting the repository.
 
@@ -85,7 +85,9 @@ K3s comes with Traefik by default. If you prefer Nginx, you must install the con
 
 ### Installing Jenkins
 
-We will deploy Jenkins directly on the Kubernetes cluster.
+You can install Jenkins **anywhere** (Kubernetes, Docker, or your local machine). As long as it can access GitHub and DockerHub, it will work.
+
+Below is a standard deployment on Kubernetes:
 
 1.  **Create Namespace**:
     ```bash
@@ -237,3 +239,9 @@ Connect ArgoCD to your Git repository to start syncing.
 ### Kubernetes Resources
 **Cluster State**:
 ![Kubectl Get All](docs/kubectl-get-all.png)
+
+---
+
+## License
+
+This project is **free to use** and was created for **educational purposes**. Feel free to fork, modify, and learn from it!
