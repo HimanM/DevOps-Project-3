@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { LayoutDashboard, Server, GitBranch, Box, Settings, Menu, X } from "lucide-react"
+import { LayoutDashboard, Server, GitBranch, Box, Settings, Menu, X, Infinity as InfinityIcon } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
@@ -37,7 +37,7 @@ export function Sidebar() {
             >
                 <div className="flex items-center gap-3 mb-10">
                     <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
-                        <span className="font-bold text-white">DO</span>
+                        <InfinityIcon className="h-5 w-5 text-white" />
                     </div>
                     <div className="flex flex-col">
                         <span className="font-bold text-xl text-white">DevOps</span>

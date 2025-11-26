@@ -6,7 +6,7 @@ import { Sidebar } from "@/components/layout/sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DevOps Project 3 - Documentation",
+  title: "DevOps Project 3 - HimanM",
   description: "GitOps, Kubernetes, Jenkins, and ArgoCD Documentation",
 };
 
