@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { FileCode, ChevronDown, ChevronRight } from "lucide-react"
+import { FileCode } from "lucide-react"
 import { CodeBlock } from "@/components/ui/code-block"
 import { cn } from "@/lib/utils"
 

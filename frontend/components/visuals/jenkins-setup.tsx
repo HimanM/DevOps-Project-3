@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Shield, Settings, Play, Key, GitBranch, Server, X, ZoomIn, Lock, Hammer, Rocket, LayoutDashboard } from "lucide-react"
+import { Settings, Key, ZoomIn, Lock, Hammer, Rocket, LayoutDashboard, X } from "lucide-react"
 
 export function JenkinsSetup() {
     const [selectedImage, setSelectedImage] = useState<{ src: string, title: string } | null>(null)
@@ -32,7 +32,7 @@ export function JenkinsSetup() {
                                 DockerHub
                             </h4>
                             <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                                Go to <strong>Manage Jenkins &gt; Credentials</strong>. Add a new "Username with password" credential.
+                                Go to <strong>Manage Jenkins &gt; Credentials</strong>. Add a new &quot;Username with password&quot; credential.
                                 <br />
                                 <span className="text-zinc-500">ID:</span> <code className="text-blue-400 bg-blue-500/10 px-1 rounded">dockerhub-username</code>
                             </p>
@@ -44,7 +44,7 @@ export function JenkinsSetup() {
                                 GitHub Token
                             </h4>
                             <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                                Add a new "Secret text" credential for your Personal Access Token (PAT).
+                                Add a new &quot;Secret text&quot; credential for your Personal Access Token (PAT).
                                 <br />
                                 <span className="text-zinc-500">ID:</span> <code className="text-blue-400 bg-blue-500/10 px-1 rounded">github-token</code>
                             </p>

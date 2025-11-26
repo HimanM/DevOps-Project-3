@@ -2,16 +2,16 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { FileCode, Zap, GitBranch } from "lucide-react"
 import { CodeBlock } from "@/components/ui/code-block"
 import { cn } from "@/lib/utils"
+import { LucideIcon } from "lucide-react"
 
 interface JenkinsFile {
     name: string
     filename: string
     description: string
     code: string
-    icon: any
+    icon: LucideIcon
 }
 
 interface JenkinsViewerProps {

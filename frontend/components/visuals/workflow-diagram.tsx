@@ -16,7 +16,7 @@ export function WorkflowDiagram() {
             opacity: 1,
             transition: {
                 duration: 1.5,
-                ease: "easeInOut" as any,
+                ease: "easeInOut" as const,
                 repeat: Infinity,
                 repeatType: "loop" as const,
                 repeatDelay: 0.5

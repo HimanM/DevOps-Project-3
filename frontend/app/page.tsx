@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Terminal, GitBranch, Server, Cloud, Shield, Zap, RefreshCw, Github, Container } from "lucide-react"
+import { GitBranch, Server, Cloud, Zap, RefreshCw, Github, Container } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CodeBlock } from "@/components/ui/code-block"
 import { FeatureCard } from "@/components/ui/feature-card"

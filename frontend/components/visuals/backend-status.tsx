@@ -1,12 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
 import { Database, CheckCircle, XCircle, Loader2 } from "lucide-react"
 import { CodeBlock } from "@/components/ui/code-block"
 
 export function BackendStatus() {
-    const [data, setData] = useState<any>(null)
+    const [data, setData] = useState<Record<string, unknown> | null>(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -17,7 +16,7 @@ export function BackendStatus() {
                 if (!res.ok) throw new Error("Failed to fetch")
                 const json = await res.json()
                 setData(json)
-            } catch (err) {
+            } catch {
                 setError("Failed to connect to backend")
             } finally {
                 setLoading(false)
