@@ -550,7 +550,7 @@ spec:
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">Application View</h3>
             <p className="text-zinc-400 text-sm">
-              The ArgoCD dashboard provides a visual representation of your application's state, showing all resources and their sync status.
+              The ArgoCD dashboard provides a visual representation of your application&apos;s state, showing all resources and their sync status.
             </p>
             <div
               className="relative aspect-video rounded-lg overflow-hidden border border-zinc-800 group cursor-pointer"
