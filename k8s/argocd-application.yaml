@@ -9,6 +9,11 @@ spec:
     repoURL: https://github.com/himanm/devops-project-3.git # REPLACE WITH YOUR REPO URL
     targetRevision: HEAD
     path: k8s
+    # Exclude Ingress manifest to avoid conflicts with existing NodePort and system Nginx configuration.
+    directory:
+      exclude: 'argocd-ingress.yaml'
+    
+
   destination:
     server: https://kubernetes.default.svc
     namespace: fullstack

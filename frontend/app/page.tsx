@@ -264,10 +264,13 @@ metadata:
   name: fullstack-app
   namespace: argocd
 spec:
+  project: default
   source:
     repoURL: https://github.com/himanm/devops-project-3.git
     targetRevision: HEAD
     path: k8s
+    directory:
+      exclude: 'argocd-ingress.yaml'
   destination:
     server: https://kubernetes.default.svc
     namespace: fullstack
