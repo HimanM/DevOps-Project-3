@@ -1,7 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { GitBranch, Server, Cloud, Zap, RefreshCw, Github, Container } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import { GitBranch, Server, Cloud, Zap, RefreshCw, Github, Container, ZoomIn, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { CodeBlock } from "@/components/ui/code-block"
 import { FeatureCard } from "@/components/ui/feature-card"
@@ -358,6 +360,8 @@ const jenkinsFiles = [
 ]
 
 export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string, title: string } | null>(null)
+
   return (
     <div className="space-y-24 pb-24">
       {/* Hero Section */}
@@ -520,7 +524,49 @@ spec:
       selfHeal: true`}
             />
           </div>
+        </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8">
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">Webhook Configuration</h3>
+            <p className="text-zinc-400 text-sm">
+              To trigger immediate syncs, configure a GitHub Webhook. Point the Payload URL to your ArgoCD instance (e.g., <code>https://argocd.himanmanduja.fun/api/webhook</code>) and select <code>application/json</code> as the content type.
+            </p>
+            <div
+              className="relative aspect-video rounded-lg overflow-hidden border border-zinc-800 group cursor-pointer"
+              onClick={() => setSelectedImage({ src: "/screenshots/github_webhooks.png", title: "GitHub Webhook Configuration" })}
+            >
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors z-10 flex items-center justify-center">
+                <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 duration-300" />
+              </div>
+              <Image
+                src="/screenshots/github_webhooks.png"
+                alt="GitHub Webhook Configuration"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">Application View</h3>
+            <p className="text-zinc-400 text-sm">
+              The ArgoCD dashboard provides a visual representation of your application's state, showing all resources and their sync status.
+            </p>
+            <div
+              className="relative aspect-video rounded-lg overflow-hidden border border-zinc-800 group cursor-pointer"
+              onClick={() => setSelectedImage({ src: "/screenshots/argocd-application.png", title: "ArgoCD Application View" })}
+            >
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors z-10 flex items-center justify-center">
+                <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 duration-300" />
+              </div>
+              <Image
+                src="/screenshots/argocd-application.png"
+                alt="ArgoCD Application View"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="pt-8 border-t border-zinc-800">
@@ -528,6 +574,58 @@ spec:
         </div>
       </section>
 
-    </div >
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-7xl w-full max-h-[90vh] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute -top-12 right-0 flex items-center gap-4">
+                <a
+                  href={selectedImage.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 text-zinc-400 hover:text-white transition-colors"
+                  title="Open original"
+                >
+                  <ZoomIn className="h-6 w-6" />
+                </a>
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="p-2 text-zinc-400 hover:text-white transition-colors"
+                >
+                  <X className="h-8 w-8" />
+                </button>
+              </div>
+
+              <div className="relative w-full h-[80vh] rounded-lg overflow-hidden bg-zinc-950 border border-zinc-800 shadow-2xl">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  fill
+                  className="object-contain"
+                  quality={100}
+                />
+              </div>
+
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-semibold text-white">{selectedImage.title}</h3>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+    </div>
   )
 }

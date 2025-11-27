@@ -193,8 +193,11 @@ Connect ArgoCD to your Git repository to start syncing.
 2.  **Setup Webhook (Optional)**:
     To trigger syncs immediately on push:
     *   In GitHub, go to **Settings > Webhooks**.
-    *   Add your ArgoCD URL (e.g., `https://argocd.himanmanduja.fun/api/webhook`).
+    *   **Payload URL**: `https://argocd.himanmanduja.fun/api/webhook`
+    *   **Content type**: `application/json`
     *   Select **Just the push event**.
+
+    ![GitHub Webhook](docs/github_webhooks.png)
 
 ---
 
@@ -231,7 +234,7 @@ Connect ArgoCD to your Git repository to start syncing.
 
 ### ArgoCD Dashboard
 **Application Status**:
-![ArgoCD App](docs/argocd-app-detail.png)
+![ArgoCD App](docs/argocd-application.png)
 
 **Resource Map**:
 ![ArgoCD Pods](docs/argocd-podview.png)
