@@ -304,6 +304,9 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
 
 If you want Nginx to be the primary ingress controller and avoid port conflicts:
 
+> [!IMPORTANT]
+> This step will reinstall K3s and remove all existing cluster resources. Only do this on a fresh installation or if you can afford to lose your current cluster state.
+
 ```bash
 # Stop K3s service
 sudo systemctl stop k3s
@@ -319,6 +322,9 @@ sudo systemctl status k3s
 - Reinstalls K3s with Traefik disabled
 - Prevents port conflicts between Traefik and Nginx
 - Allows Nginx to use standard HTTP (80) and HTTPS (443) ports
+
+**Alternative approach (non-destructive):**
+If you already have workloads running, you can configure both ingress controllers to coexist by using different ports or configuring Nginx to use a different service type (LoadBalancer or NodePort on different ports).
 
 **Step 5: Verify Nginx Installation**
 
